@@ -1,3 +1,4 @@
+/*
 function compareTriplets(a, b) {
     const results = [0, 0];
     let arrayLength = a.length;    
@@ -12,10 +13,7 @@ function compareTriplets(a, b) {
 }
 const a = [5, 6, 7];
 const b = [3, 6, 10];
-console.log(compareTriplets(a, b))
-
-
-/************************************** */
+console.log(compareTriplets(a, b)) 
 
 function aVeryBigSum(ar) { 
     // Write your code here 
@@ -57,3 +55,54 @@ function plusMinus(arr) {
     console.log(`${plusProp}\n${minusProp}\n${zerosProp}`);
 }
 plusMinus(plusMinusArray);
+
+
+00 01 02 
+10 11 12
+20 21 22
+
+
+
+function diagonalDifference (arr) {
+    // Write your code here
+    let n = arr.length;
+    let diag01 = 0, diag02 = 0;    
+    for (let i = 0; i < n; i++){
+        for (let j = 0; j < n; j++){
+            if ( i == j) {
+                diag01 += arr[i][j];                
+            }
+            if (j == n - i - 1)
+                diag02 += arr[i][j];
+        }        
+    }
+    return ((diag01 - diag02) > 0) ? diag01 - diag02 : (diag01 - diag02) * (-1);
+    //console.log(diag01, diag02, moduleDiff);
+}
+
+const testArr = [
+                [11, 2, 4],
+                [4, 5, 6],
+                [10, 8, -12]
+                ];
+
+console.log(diagonalDifference(testArr));
+
+_ _ _ _ _ _ #
+0 1 2 3 4 5
+
+
+function staircase(n) {
+    // Write your code here    
+    let linea = '';
+    for(let i = 1; i <= n; i++){        
+        for (let j = 1; j <= n; j++){
+            linea += (j > n - i ) ? '#' : ' ';                      
+        }                
+        console.log(linea);        
+        linea = '';
+    }
+}
+staircase(6);
+
+*/
