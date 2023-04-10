@@ -105,4 +105,38 @@ function staircase(n) {
 }
 staircase(6);
 
+
+
+function miniMaxSum(arr) {
+    // Write your code here
+    let sortedArr = arr.sort();
+    let minis = sortedArr.slice(0, 4);
+    let maxis = sortedArr.slice(1, 5);    
+    let minisSum = minis.reduce((a, b) => a + b);
+    let maxisSum = maxis.reduce((a, b) => a + b);
+    console.log(`${minisSum} ${maxisSum}`);
+}
+const miniMaxSumArray = [7, 5, 3, 1, 9];
+miniMaxSum(miniMaxSumArray);
+
 */
+
+function birthdayCakeCandles(candles) {
+    // Write your code here
+    let candlesQuantity = candles.length;
+    let candleBigger = 1;
+    let candlesBiggerQuantity = 1;
+    for (let i = 0; i < candlesQuantity; i++){
+        let candleCurrent = candles[i];
+        if (candleCurrent > candleBigger){
+            candleBigger = candleCurrent;
+            candlesBiggerQuantity = 1;
+        }else if (candleCurrent == candleBigger){
+            candlesBiggerQuantity += 1; 
+        }
+    }
+    return candlesBiggerQuantity;
+}
+
+const candles =  [3, 3, 3, 3];
+console.log(birthdayCakeCandles(candles));
