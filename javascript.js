@@ -124,7 +124,7 @@ miniMaxSum(miniMaxSumArray);
 function birthdayCakeCandles(candles) {
     // Write your code here
     let candlesQuantity = candles.length;
-    let candleBigger = 1;
+    let candleBigger = Number.NEGATIVE_INFINITY;
     let candlesBiggerQuantity = 1;
     for (let i = 0; i < candlesQuantity; i++){
         let candleCurrent = candles[i];
