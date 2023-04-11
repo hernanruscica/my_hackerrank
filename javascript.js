@@ -179,3 +179,26 @@ function gradingStudents(grades) {
 const graddingTest = [73, 67, 38, 33];
 console.log(gradingStudents(graddingTest));
 */
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+    // Write your code here
+    let m = oranges.length;
+    let n = apples.length;
+    if ((a < s) &&  (s < t) && (t < b) 
+        && (a >= 1 && a < 10000) && (b >= 1 && b < 10000) && (s >= 1 && s < 10000) && (t >= 1 && t < 10000) && (n >= 1 && n < 10000) && (m >= 1 && m < 10000)
+        ){                
+        let applesLanding = apples.map(apple => a + apple);
+        let orangesLanding = oranges.map(orange => b + orange);
+        let applesAtSamHome = applesLanding.filter(apple => apple >= s && apple < t).length;
+        let orangeAtSamHome = orangesLanding.filter(orange => orange >= s && orange < t).length;
+        //console.log(applesLanding, applesAtSamHome);
+        //console.log(orangesLanding, orangeAtSamHome);
+        console.log(parseInt(applesAtSamHome));
+        console.log(parseInt(orangeAtSamHome));
+    }else{
+    console.log('Error');
+    }
+}
+const myApples = [-2, 2, 1];
+const myOranges = [5, -6];
+countApplesAndOranges(7, 11, 5, 15, myApples, myOranges);
