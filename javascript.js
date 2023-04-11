@@ -119,7 +119,7 @@ function miniMaxSum(arr) {
 const miniMaxSumArray = [7, 5, 3, 1, 9];
 miniMaxSum(miniMaxSumArray);
 
-*/
+
 
 function birthdayCakeCandles(candles) {
     // Write your code here
@@ -138,5 +138,44 @@ function birthdayCakeCandles(candles) {
     return candlesBiggerQuantity;
 }
 
-const candles =  [3, 3, 3, 3];
+const candles =  [1, 1, 1, 1];
 console.log(birthdayCakeCandles(candles));
+
+
+function timeConversion(s) {
+    // Write your code here
+    let suffix = s.slice(-2);
+    let hoursInt = parseInt(s.slice(0,2));
+    let hoursStr = '', Format24Hs = '';
+    if (suffix == 'PM'){
+        hoursInt = (hoursInt == 12) ? hoursInt : (hoursInt + 12) % 24;                
+    }else if(suffix == 'AM'){
+        hoursInt = (hoursInt == 12) ? 0 : (hoursInt ) % 24;                
+    }
+    hoursStr = (hoursInt < 10) ? '0'+hoursInt : hoursInt ;
+    Format24Hs = hoursStr + s.slice(2, 8);
+    //console.log(`${s} <=> ${Format24Hs} (24 Hs format)`);
+    return Format24Hs;
+}
+let timeConversionTest = '06:40:03AM' ;
+console.log(timeConversion(timeConversionTest));
+
+
+function gradingStudents(grades) {
+    // Write your code here
+    let myGrades = [];
+    let fiveMultis = [];        
+    for (let i = 0; i <= 100; i += 5){
+        fiveMultis.push(i);
+    }   
+    grades.forEach((grade, index) => {
+        let nextMultiBig = fiveMultis.find(multi => grade < multi && multi - grade < 5);
+        let gradeRounded =  ((nextMultiBig - grade < 3) && grade >= 38) ? nextMultiBig : grade;
+        myGrades.push(gradeRounded);
+        //console.log(grade, nextMultiBig, gradeRounded);                
+    });
+    return myGrades;
+}
+const graddingTest = [73, 67, 38, 33];
+console.log(gradingStudents(graddingTest));
+*/
