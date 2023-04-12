@@ -178,27 +178,128 @@ function gradingStudents(grades) {
 }
 const graddingTest = [73, 67, 38, 33];
 console.log(gradingStudents(graddingTest));
-*/
+
 
 function countApplesAndOranges(s, t, a, b, apples, oranges) {
     // Write your code here
     let m = oranges.length;
-    let n = apples.length;
-    if ((a < s) &&  (s < t) && (t < b) 
-        && (a >= 1 && a < 10000) && (b >= 1 && b < 10000) && (s >= 1 && s < 10000) && (t >= 1 && t < 10000) && (n >= 1 && n < 10000) && (m >= 1 && m < 10000)
-        ){                
-        let applesLanding = apples.map(apple => a + apple);
-        let orangesLanding = oranges.map(orange => b + orange);
-        let applesAtSamHome = applesLanding.filter(apple => apple >= s && apple < t).length;
-        let orangeAtSamHome = orangesLanding.filter(orange => orange >= s && orange < t).length;
-        //console.log(applesLanding, applesAtSamHome);
-        //console.log(orangesLanding, orangeAtSamHome);
-        console.log(parseInt(applesAtSamHome));
-        console.log(parseInt(orangeAtSamHome));
-    }else{
-    console.log('Error');
-    }
+    let n = apples.length;                   
+    let applesLanding = apples.map(apple => a + apple);
+    let orangesLanding = oranges.map(orange => b + orange);
+    let applesAtSamHome = applesLanding.filter(apple => apple >= s && apple <= t).length;
+    let orangeAtSamHome = orangesLanding.filter(orange => orange >= s && orange <= t).length;    
+    console.log(parseInt(applesAtSamHome));
+    console.log(parseInt(orangeAtSamHome));            
 }
-const myApples = [-2, 2, 1];
-const myOranges = [5, -6];
-countApplesAndOranges(7, 11, 5, 15, myApples, myOranges);
+const myApples = [2];
+const myOranges = [-2];
+countApplesAndOranges(2, 3, 1, 5, myApples, myOranges);
+*/
+
+/*   BON APPETIT
+4 1 => cuatro items, el indice del item que no comio anna es k (n, k)
+3 10 2 9 =>  El total de items que reconoce anna es de 3 + 2 + 9 = 14 (actual) . Es decir que deberia pagar 7  (array bill)
+12  => segun la cuenta de Brian. El total era 24, entonces la parte de anna era de 12. (b) charged by Brian
+Por consiguiente la diferencia que le tiene que devolver es de 12 - 7 = 5*/
+
+/*
+function bonAppetit(bill, k, b) {
+    // Write your code here
+    let result = null;
+    let myBill = [...bill];    
+    myBill.splice(k, 1);    
+    let actual = myBill.reduce((a, b) => a + b);   
+    result = (b - (actual / 2) == 0) ? 'Bon Appetit' : parseInt((b - (actual / 2))) ;
+    console.log(result);
+}
+
+const bonAppetitTestArray = [3, 10, 2, 9];
+bonAppetit(bonAppetitTestArray, 1, 7);
+
+
+00 01 02
+10 11 12
+20 21 22
+
+
+
+function hourglassSum(arr) {
+    // Write your code here
+    const allHourglassSums = [];    
+    const sumHourglas = (startX, startY, matrix6x6) => {     
+        let sum = 0, counter = 0;
+        let endX = (startX + 3 <= matrix6x6[0].length) ? startX + 2 : 3;
+        let endY = (startY + 3 <= matrix6x6[0].length) ? startY + 2 : 3;
+        
+        for (let i = startX; i <= endX; i++){
+            for (let j = startY; j <= endY; j++){         
+                if (counter != 3 && counter != 5){
+                    sum += arr[i][j];        
+                }
+                counter++;
+            }
+        }
+        return sum;
+    } 
+    for (let i = 0; i <= 3; i++){
+        for (let j = 0; j <= 3; j++){
+            allHourglassSums.push(sumHourglas(i, j, arr));
+        }
+    }        
+    console.log(allHourglassSums);
+    return  Math.max(...allHourglassSums);
+}
+const hourGlassTest = [
+                        [-9, -9, -9, 1, 1, 1],
+                        [ 0, -9,  0, 4, 3, 2],
+                        [-9, -9, -9, 1, 2, 3],
+                        [ 0,  0,  8, 6, 6, 0],
+                        [ 0,  0,  0,-2, 0, 0],
+                        [ 0,  0,  1, 2, 4, 0],
+                        ];
+const test01 = [
+                [ 1,  1,  1, 0, 0, 0],
+                [ 0,  1,  0, 0, 0, 0],
+                [ 1,  1,  1, 0, 0, 0],
+                [ 0,  0,  2, 4, 4, 0],
+                [ 0,  0,  0, 2, 0, 0],
+                [ 0,  0,  1, 2, 4, 0],
+                ]; //19
+const test02 = [
+            [ 1,  1,  1, 0, 0, 0],
+            [ 0,  1,  0, 0, 0, 0],
+            [ 1,  1,  1, 0, 0, 0],
+            [ 0,  9,  2, -4, -4, 0],
+            [ 0,  0,  0, -2, 0, 0],
+            [ 0,  0,  -1, -2, -4, 0],
+            ]; //13
+console.log(`the maximum hourglass sum is : ${hourglassSum(test01)}`)
+console.log(`the maximum hourglass sum is : ${hourglassSum(test02)}`)
+
+
+function breakingRecords(scores) {
+    // Write your code here
+    let highestScore = scores[0];
+    let lowestScore = scores[0];
+    let breakingScoreHighestCounter = 0;
+    let breakingScoreLowestCounter = 0;    
+    scores.forEach(score => {
+        if (score > highestScore){
+            highestScore = score;
+            breakingScoreHighestCounter += 1;       
+            console.log(highestScore);     
+        }
+        if (score < lowestScore){
+            lowestScore = score;
+            breakingScoreLowestCounter += 1;
+        }
+    });
+    return [breakingScoreHighestCounter, breakingScoreLowestCounter];    
+}
+const scoresTest = [10, 5, 20, 20, 4, 5, 2, 25, 1];
+console.log(scoresTest);
+const myBreakingRecords = breakingRecords(scoresTest);
+//console.log(`Breaking most points records: ${myBreakingRecords[0]}\nBreaking least points records: ${myBreakingRecords[1]}`);
+console.log(myBreakingRecords);
+
+*/
