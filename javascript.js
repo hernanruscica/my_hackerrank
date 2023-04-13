@@ -302,4 +302,73 @@ const myBreakingRecords = breakingRecords(scoresTest);
 //console.log(`Breaking most points records: ${myBreakingRecords[0]}\nBreaking least points records: ${myBreakingRecords[1]}`);
 console.log(myBreakingRecords);
 
+
+
+// Complete the catAndMouse function below.  
+
+function catAndMouse(x, y, z) {
+    let results = null;  
+    let distanceA = Math.abs(z - x);
+    let distanceB = Math.abs(z - y);
+    if (distanceA > distanceB) {
+        results = 'Cat B'
+    }else if (distanceA == distanceB){
+        results = 'Mouse C';
+    }else{
+        results = 'Cat A'
+    }        
+    return results;        
+};
+//console.log(catAndMouse(0, 4, 1));//Deberia devolver 'Cat A'
+console.log(catAndMouse(0, 4, 2));//Deberia devolver 'Mouse'
+//catAndMouse(queries);//Deberia devolver 'Cat B'
 */
+
+/*
+5 > cantidad de partes del chocolate
+1 2 1 3 2 => cada una de las partes y cuanto suma cada una
+3 2 => d = 3 (cuanto tiene que sumar en total), m = 2 (cantidad de partes a darle) 
+1 + 2 = 3 > una forma
+2 + 1 => 3 > otra forma
+en total dos formas de repartir el chocolate, la salida es de 2 (entero)
+*/
+/*
+function birthday(s, d, m) {
+    // Write your code here
+    let result = 0;    
+    s.forEach((portion, index, array)=> {            
+        let subArrayPortion = array.slice(index, index + m );
+        let sumSubArrayPortion = subArrayPortion.reduce((a, b) => (a + b));
+        if (subArrayPortion.length == m && sumSubArrayPortion == d){
+            result += 1;
+        }
+        console.log(subArrayPortion, sumSubArrayPortion);
+    });
+    return result
+};
+
+const birthdayTestArr = [2, 2, 1, 3, 2];
+const birthdayTestArr2 = [1, 1, 1, 1, 1];
+const birthdayTestArr3 = [1, 2, 1, 3, 2];
+const birthdayTestArr4 = [4];
+//console.log(birthday(birthdayTestArr, 4, 2));
+//console.log(birthday(birthdayTestArr2, 3, 2));
+//console.log(birthday(birthdayTestArr3, 3, 2));
+console.log(birthday(birthdayTestArr4, 4, 1));
+*/
+
+function camelcase(s) {
+    // Write your code here
+    let numberWords = 0;
+    let sLong = s.length;
+    
+    for (let i = 1; i< sLong; i++){
+        if (s.charCodeAt(i) > 64 && s.charCodeAt(i) <= 90){
+            numberWords += 1;
+        }
+    }
+
+    //console.log(s.charCodeAt(0));
+    return numberWords + 1;
+}
+console.log(camelcase('oneTwoThree'));
