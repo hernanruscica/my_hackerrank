@@ -355,7 +355,7 @@ const birthdayTestArr4 = [4];
 //console.log(birthday(birthdayTestArr2, 3, 2));
 //console.log(birthday(birthdayTestArr3, 3, 2));
 console.log(birthday(birthdayTestArr4, 4, 1));
-*/
+
 
 function camelcase(s) {
     // Write your code here
@@ -372,3 +372,37 @@ function camelcase(s) {
     return numberWords + 1;
 }
 console.log(camelcase('oneTwoThree'));
+*/
+
+/*
+   Ceasar cypher
+*/
+
+function caesarCipher(s, k) {
+    // Write your code here
+    let sLong = s.length;
+    let codecString = '';
+    for (let i = 0; i < sLong; i++){        
+        let currentCharCode = s.charCodeAt(i);
+        const codecCharCode = (min, max, current, increment) => {
+            if (current + increment <= max){
+                return current + increment;
+            }else {
+                return min + increment - (max - current);
+            }
+        }
+        //console.log(currentCharCode);
+        if (currentCharCode > 64 && currentCharCode <= 90){
+            codecString += String.fromCharCode(codecCharCode(64, 90, currentCharCode, k));
+        }else if (currentCharCode > 96 && currentCharCode <= 122){
+            codecString += String.fromCharCode(codecCharCode(96, 122, currentCharCode, k));
+            }else{
+                codecString += String.fromCharCode(currentCharCode);
+            }                            
+    }
+    //console.log(codecString);
+    return codecString;
+}
+let caesarTest = 'www.abc.xy';
+console.log('fff.jkl.gh');
+console.log(caesarCipher(caesarTest, 5));
