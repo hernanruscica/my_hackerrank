@@ -375,34 +375,64 @@ console.log(camelcase('oneTwoThree'));
 */
 
 /*
-   Ceasar cypher
-*/
+   
 
-function caesarCipher(s, k) {
+
+No funciona
+function hurdleRace(k, height) {
     // Write your code here
-    let sLong = s.length;
-    let codecString = '';
-    for (let i = 0; i < sLong; i++){        
-        let currentCharCode = s.charCodeAt(i);
-        const codecCharCode = (min, max, current, increment) => {
-            if (current + increment <= max){
-                return current + increment;
-            }else {
-                return min + increment - (max - current);
-            }
+    let potionDoses = 0;   
+
+    let len = arr.length
+    let maxHeight = -Infinity;
+    while (len--) {
+        if (arr[len] > maxHeight) {
+        maxHeight = arr[len];
         }
-        //console.log(currentCharCode);
-        if (currentCharCode > 64 && currentCharCode <= 90){
-            codecString += String.fromCharCode(codecCharCode(64, 90, currentCharCode, k));
-        }else if (currentCharCode > 96 && currentCharCode <= 122){
-            codecString += String.fromCharCode(codecCharCode(96, 122, currentCharCode, k));
-            }else{
-                codecString += String.fromCharCode(currentCharCode);
-            }                            
     }
-    //console.log(codecString);
-    return codecString;
+
+    potionDoses = (maxHeight - height > 0) ? maxHeight - height : 0 ;    
+    return potionDoses;
 }
-let caesarTest = 'www.abc.xy';
-console.log('fff.jkl.gh');
-console.log(caesarCipher(caesarTest, 5));
+let hurdleRaceTest01 = [1, 6, 3, 5, 2];
+let hurdleRaceTest02 = [2, 5, 4, 5, 2];
+console.log(hurdleRace(hurdleRaceTest01, 4));
+console.log(hurdleRace(hurdleRaceTest02, 7));
+
+*/
+/* FUNCIONA
+function minimumNumber(n, password) {
+    // Return the minimum number of characters to make the password strong
+    const MIN_QTY_CHARS = 6;    
+    let digitsCounter = 0, upperCaseCounter = 0, lowerCaseCounter = 0, specialsCharCounter = 0;
+    let toAdd = 0;
+    let constrains = 0;
+    for (let i = 0; i <= n; i++){        
+        if(password.charAt(i).search(/[0-9]/) == 0){
+            digitsCounter += 1;               
+        }
+        if(password.charAt(i).search(/[a-z]/) == 0){
+            lowerCaseCounter += 1;            
+        }
+        if(password.charAt(i).search(/[A-Z]/) == 0){
+            upperCaseCounter += 1;            
+        }
+        if(password.charAt(i).search(/[!@#$%^&*()\-+]/) == 0){
+            specialsCharCounter += 1;            
+        }        
+    }        
+    if (n < MIN_QTY_CHARS){
+        toAdd = MIN_QTY_CHARS - n;
+    }
+
+    constrains += (digitsCounter < 1) ? 1 : 0;        
+    constrains += (lowerCaseCounter < 1) ? 1 : 0;
+    constrains += (upperCaseCounter < 1) ? 1 : 0;
+    constrains += (specialsCharCounter < 1) ? 1 : 0;
+        
+    console.log(toAdd, constrains);
+    return (toAdd >= constrains) ? toAdd : constrains ;
+    }      
+//console.log(minimumNumber(11, '#HackerRank'));
+console.log(minimumNumber(7, 'AUzs-nV'));
+*/
