@@ -375,32 +375,29 @@ console.log(camelcase('oneTwoThree'));
 */
 
 /*
-   
-
-
-No funciona
 function hurdleRace(k, height) {
     // Write your code here
-    let potionDoses = 0;   
-
-    let len = arr.length
+    let potionDoses = 0;       
+    //let maxHeight = k.sort((a, b) => (a > b) ? -1 : 1)[0];    
+    let arrayLength = height.length;
     let maxHeight = -Infinity;
-    while (len--) {
-        if (arr[len] > maxHeight) {
-        maxHeight = arr[len];
+    //console.log(arrayLength)
+    for (let i = 0; i < arrayLength; i++){
+        if (height[i] > maxHeight){
+            maxHeight = height[i];
         }
     }
-
-    potionDoses = (maxHeight - height > 0) ? maxHeight - height : 0 ;    
+    //console.log('max height :', maxHeight);
+    potionDoses = (maxHeight > k ) ? maxHeight - k : 0 ;    
     return potionDoses;
 }
 let hurdleRaceTest01 = [1, 6, 3, 5, 2];
 let hurdleRaceTest02 = [2, 5, 4, 5, 2];
-console.log(hurdleRace(hurdleRaceTest01, 4));
-console.log(hurdleRace(hurdleRaceTest02, 7));
-
+console.log(hurdleRace(4, hurdleRaceTest01));
+console.log(hurdleRace(7, hurdleRaceTest02));
 */
-/* FUNCIONA
+
+/* 
 function minimumNumber(n, password) {
     // Return the minimum number of characters to make the password strong
     const MIN_QTY_CHARS = 6;    
@@ -436,3 +433,23 @@ function minimumNumber(n, password) {
 //console.log(minimumNumber(11, '#HackerRank'));
 console.log(minimumNumber(7, 'AUzs-nV'));
 */
+
+function kangaroo(x1, v1, x2, v2) {
+    // Write your code here
+    // x1 + v1 = 2 + 1, x2 + v2 = 1 + 2
+    let jump = 0;
+    let founded = false;
+    //for (jump = 0; jump < 100; jump++){        
+    do {
+        x1 += v1;
+        x2 += v2;
+        jump += 1;
+        if(x1 == x2){
+            founded == true;
+        }
+        console.log(`jump: ${jump} kangoo1: ${x1} || kangoo2: ${x2}`);        
+    }while(founded  == false);
+
+    return founded;
+}
+console.log(kangaroo(0, 3, 4, 2));
