@@ -493,4 +493,35 @@ function dayOfProgrammer(year) {
 }
 
 console.log(dayOfProgrammer(1919)); 
+
+
+function angryProfessor(k, a) {
+    // Write your code here
+    let onTimeCount = 0;
+    a.forEach(time => {
+        onTimeCount += (time <= 0) ? 1 : 0;
+    });
+    console.log(onTimeCount);
+    return (onTimeCount >= k) ? 'NO' : 'YES';
+}
+const angryProfessorTest01 = [-1, -3, 4, 2];
+const angryProfessorTest02 = [0, -1, 2, 1];
+console.log(angryProfessor(3, angryProfessorTest01));
+console.log(angryProfessor(2, angryProfessorTest02));
+
 */
+
+function pickingNumbers(a) {
+    // Write your code here
+    let maxLengthSubArray = null;
+    let currentSubArrayLength = 0;
+    for(let i = 0; i < a.length; i++){        
+        if (i != a.length - 1){
+            let diference = Math.abs(a[i] - a[i+1]);
+            //currentSubArrayLength += (diference < 1) ? 1 : 0;
+            console.log(a[i], a[i+1], diference);
+        }        
+    }
+}
+const pickingNumbersTest01 = [4, 6, 5, 3, 3, 1];
+pickingNumbers(pickingNumbersTest01);
