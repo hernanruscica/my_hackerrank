@@ -432,24 +432,65 @@ function minimumNumber(n, password) {
     }      
 //console.log(minimumNumber(11, '#HackerRank'));
 console.log(minimumNumber(7, 'AUzs-nV'));
-*/
+
 
 function kangaroo(x1, v1, x2, v2) {
-    // Write your code here
-    // x1 + v1 = 2 + 1, x2 + v2 = 1 + 2
+    // Write your code here    
     let jump = 0;
-    let founded = false;
-    //for (jump = 0; jump < 100; jump++){        
+    let founded = false;            
     do {
+        if(x1 == x2) founded = true;        
+        //console.log(`jump: ${jump} kangoo1: ${x1} || kangoo2: ${x2}`);  
         x1 += v1;
         x2 += v2;
-        jump += 1;
-        if(x1 == x2){
-            founded == true;
-        }
-        console.log(`jump: ${jump} kangoo1: ${x1} || kangoo2: ${x2}`);        
-    }while(founded  == false);
-
-    return founded;
+        jump += 1;      
+    }while(!founded && jump < 10000);
+    return (founded) ? 'YES' : 'NO';
 }
 console.log(kangaroo(0, 3, 4, 2));
+
+
+function dayOfProgrammer(year) {
+    // It needs to accept years the inclusive range from 1700 to 2700.
+    //From 1700 to 1917, Russia's official calendar was the Julian calendar
+    let dayOfTheProgrammer = null, monthOfTheProgrammer = null;
+    let typeOfCalendar = null;
+    let isLeapYear = false;
+    let daysCounter = 0, finishDay = 256;
+    const daysQtyMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (year >= 1700 && year <= 1917) typeOfCalendar = 'julian'
+    else if (year > 1917 && year <= 2700) typeOfCalendar = 'gregorian';
+
+    if (typeOfCalendar == 'julian' && year % 4 == 0) isLeapYear = true;
+    if (typeOfCalendar == 'gregorian'){
+        if (year % 4 == 0 ){
+            if (year % 100 != 0){
+                isLeapYear = true;
+            }else if (year % 400 == 0){
+                isLeapYear = true;
+            }            
+        }
+    }  
+    daysQtyMonths[1] = (isLeapYear == true) ? 29 : 28; 
+
+    daysQtyMonths.forEach((daysQty, index) => {
+        if (daysCounter + daysQty <= finishDay){
+            daysCounter += daysQty;
+            monthOfTheProgrammer = index + 2;            
+            dayOfTheProgrammer = finishDay - daysCounter;
+        }        
+    }
+    )
+
+    const zero = (num) => {
+        return (num <= 9) ? `0${num}` : `${num}`;        
+    }
+
+    console.log(typeOfCalendar, isLeapYear, monthOfTheProgrammer);
+    console.log(daysQtyMonths);
+    dayOfTheProgrammer = (year == 1918) ? 26 : dayOfTheProgrammer;
+    return `${zero(dayOfTheProgrammer)}.${zero(monthOfTheProgrammer)}.${year}`;
+}
+
+console.log(dayOfProgrammer(1919)); 
+*/
