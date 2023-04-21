@@ -513,15 +513,35 @@ console.log(angryProfessor(2, angryProfessorTest02));
 
 function pickingNumbers(a) {
     // Write your code here
-    let maxLengthSubArray = null;
-    let currentSubArrayLength = 0;
-    for(let i = 0; i < a.length; i++){        
-        if (i != a.length - 1){
-            let diference = Math.abs(a[i] - a[i+1]);
-            //currentSubArrayLength += (diference < 1) ? 1 : 0;
-            console.log(a[i], a[i+1], diference);
-        }        
+    let sortedArray = a.sort(function(a,b){
+        return(a - b);
+    })
+    
+    let currentArray = [];
+    let longestArray = 0;
+    let startNumber = 0;
+    for(let i = 0; i < sortedArray.length; i++){
+        let result = Math.abs(sortedArray[startNumber] - sortedArray[i]);
+        if (result <= 1){
+            currentArray.push(sortedArray[i]);
+            if(currentArray.length > longestArray){
+                    longestArray = currentArray.length
+                };
+        }else {
+    
+            startNumber = i;
+            if(currentArray.length > longestArray){
+                longestArray = currentArray.length
+            }
+            currentArray = [];
+            currentArray.push(sortedArray[i]);
+        }
+    
     }
+    return longestArray;
 }
+
 const pickingNumbersTest01 = [4, 6, 5, 3, 3, 1];
-pickingNumbers(pickingNumbersTest01);
+const pickingNumbersTest02 = [1, 2, 2, 3, 1, 2];
+console.log(pickingNumbers(pickingNumbersTest01));
+console.log(pickingNumbers(pickingNumbersTest02));
