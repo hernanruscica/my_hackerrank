@@ -509,7 +509,7 @@ const angryProfessorTest02 = [0, -1, 2, 1];
 console.log(angryProfessor(3, angryProfessorTest01));
 console.log(angryProfessor(2, angryProfessorTest02));
 
-*/
+
 
 function pickingNumbers(a) {
     // Write your code here
@@ -545,3 +545,43 @@ const pickingNumbersTest01 = [4, 6, 5, 3, 3, 1];
 const pickingNumbersTest02 = [1, 2, 2, 3, 1, 2];
 console.log(pickingNumbers(pickingNumbersTest01));
 console.log(pickingNumbers(pickingNumbersTest02));
+*/
+
+function hackerrankInString(s) {
+    // Write your code here
+    let searchedWord = 'hackerrank';
+    let searchedWordLen = searchedWord.length;
+    let response = 'YES';
+
+    const letterExits = (myString, myChar) => {
+        let position = myString.search(myChar);
+        return position;
+    }    
+    //console.log(letterExits(s, 'h'));
+
+    for (let i = 0; i < searchedWordLen; i++){
+        //console.log(searchedWord[i]);
+        let currentChar = searchedWord[i];       
+        let positionFounded = s.search(currentChar);
+        if (positionFounded != -1){
+            s = s.slice(positionFounded + 1);
+            //console.log(s)            
+        }else{
+            //console.log("not founded");
+            response = 'NO';
+        }
+
+    }
+
+    return response;
+}
+let hackerrankInStringTest01 = 'hhaacckkekraraannk'; 
+let hackerrankInStringTest02 = 'hackerworld';
+let hackerrankInStringTest03 = 'hhaacckkekraraannk';
+let hackerrankInStringTest04 = 'rhbaasdndfsdskgbfefdbrsdfhuyatrjtcrtyytktjjt';
+
+
+console.log(hackerrankInString(hackerrankInStringTest01)); //YES
+console.log(hackerrankInString(hackerrankInStringTest02)); //NO
+console.log(hackerrankInString(hackerrankInStringTest03)); //YES
+console.log(hackerrankInString(hackerrankInStringTest04)); //NO
