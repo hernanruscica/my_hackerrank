@@ -545,20 +545,13 @@ const pickingNumbersTest01 = [4, 6, 5, 3, 3, 1];
 const pickingNumbersTest02 = [1, 2, 2, 3, 1, 2];
 console.log(pickingNumbers(pickingNumbersTest01));
 console.log(pickingNumbers(pickingNumbersTest02));
-*/
+
 
 function hackerrankInString(s) {
     // Write your code here
     let searchedWord = 'hackerrank';
     let searchedWordLen = searchedWord.length;
-    let response = 'YES';
-
-    const letterExits = (myString, myChar) => {
-        let position = myString.search(myChar);
-        return position;
-    }    
-    //console.log(letterExits(s, 'h'));
-
+    let response = 'YES';   
     for (let i = 0; i < searchedWordLen; i++){
         //console.log(searchedWord[i]);
         let currentChar = searchedWord[i];       
@@ -570,9 +563,7 @@ function hackerrankInString(s) {
             //console.log("not founded");
             response = 'NO';
         }
-
     }
-
     return response;
 }
 let hackerrankInStringTest01 = 'hhaacckkekraraannk'; 
@@ -585,3 +576,29 @@ console.log(hackerrankInString(hackerrankInStringTest01)); //YES
 console.log(hackerrankInString(hackerrankInStringTest02)); //NO
 console.log(hackerrankInString(hackerrankInStringTest03)); //YES
 console.log(hackerrankInString(hackerrankInStringTest04)); //NO
+*/
+
+function pangrams(s) {
+    // Write your code here    
+    let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    let alphabetLen = alphabet.length;
+    let counter = 0;
+    
+    alphabet.forEach((currentChar) => {
+        //console.log(currentChar)
+        let currentCharLower = currentChar.toLowerCase();
+        let foundedCharPosUpper = s.search(currentChar) > -1;
+        let foundedCharPosLower = s.search(currentCharLower) > -1;
+
+        if (foundedCharPosUpper || foundedCharPosLower){
+            //console.log('Founded');
+            counter += 1;
+            foundedCharPosUpper = false;
+            foundedCharPosLower = false;
+        }
+    });    
+    return (counter == alphabetLen) ? 'pangram' : 'not pangram';
+}
+
+console.log(pangrams('We promptly juged antique ivory buckles for the next prize'));
+console.log(pangrams('We promptly judged antique ivory buckles for the prize'));
